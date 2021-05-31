@@ -2,13 +2,6 @@
 # Build and test ASP.NET Core projects targeting .NET Core.
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-#Just a testing change
-
-- task: AzureAppConfiguration@3
-  inputs:
-    azureSubscription: 'MAIC - TEK Experts CR - v-juasol Group#1(90d7af21-b3a1-4bf8-a149-8e1fcc47e337)'
-    ConfigstoreName: 'AppConfig-Jeshua'
-    KeyFilter: '*'
 
 trigger:
 - master
@@ -22,3 +15,7 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- task: AzureAppConfiguration@3
+  inputs:
+    ConfigstoreName: 'AppConfig-Jeshua'
+    KeyFilter: '*'
